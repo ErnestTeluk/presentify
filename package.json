@@ -8,7 +8,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "prettier --config .prettierrc --write",
+      "prettier --config .prettierrc.js --write",
       "eslint --fix"
     ]
   },
@@ -16,8 +16,8 @@
     "eslint-config-vazco": "7.1.0",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-typescript": "3.5.3",
+    "husky": "8.0.0",
     "lerna": "6.0.1",
-    "lint-staged": "13.2.0",
-    "husky": "8.0.0"
+    "lint-staged": "13.2.0"
   }
 }
