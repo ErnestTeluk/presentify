@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "plugin:import/errors",
+    "plugin:import/typescript",
+    "vazco/typescript"
+  ],
+  "root": true,
+  "rules": {},
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}
