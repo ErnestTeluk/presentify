@@ -1,0 +1,12 @@
+{
+  "name": "presentify",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Ernest Teluk",
+  "scripts": {
+    "build": "tsc --build --incremental tsconfig.build.json"
+  },
+  "dependencies": {
+    "lerna": "6.0.1"
+  }
+}

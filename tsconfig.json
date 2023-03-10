@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "packages",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "paths": { "create-presentify": ["create-presentify/src"]},
+  }
+}

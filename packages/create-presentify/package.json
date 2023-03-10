@@ -1,0 +1,14 @@
+{
+  "name": "create-presentify",
+  "version": "0.0.1",
+  "author": "Ernest Teluk",
+  "type": "module",
+  "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "bin": {
+    "create-presentify": "index.js"
+  }
+}
