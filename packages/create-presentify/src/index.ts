@@ -1,6 +1,9 @@
+/* eslint-disable no-console */
 import { blue, bold, red, yellow } from 'kolorist';
 import minimist from 'minimist';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, mkdirSync, cpSync, rmSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import prompts from 'prompts';
 
 const getTargetDir = (targetDir: string | undefined) => {
@@ -16,6 +19,7 @@ const argValue = minimist<{
   t?: string;
   template?: string;
 }>(process.argv.slice(2), { string: ['_'] });
+const cwd = process.cwd();
 
 const defaultTargetDir = 'presentify-project';
 
@@ -37,7 +41,7 @@ const init = async () => {
 
   let targetDir = argTargetDir || defaultTargetDir;
 
-  let result: prompts.Answers<'projectName' | 'overwrite'>;
+  let result: prompts.Answers<'projectName' | 'overwrite' | 'variant'>;
 
   try {
     result = await prompts(
@@ -86,16 +90,39 @@ const init = async () => {
       ],
       {
         onCancel: () => {
-          throw new Error(red('✖') + ' Operation cancelled');
+          throw new Error(red('✖') + bold(' Operation cancelled'));
         },
       },
     );
   } catch (error: any) {
-    // eslint-disable-next-line no-console -- this console.log is needed to log errors
-    console.log(error);
+    console.log(error.message);
     return;
   }
+
+  const { projectName, overwrite, variant } = result;
+
+  const root = join(cwd, targetDir);
+
+  if (overwrite) {
+    isDirEmpty(root);
+    readdirSync(root).forEach(f => rmSync(`${root}/${f}`, { recursive: true }));
+  } else if (!existsSync(root)) {
+    mkdirSync(root, { recursive: true });
+  }
+
+  const templateDir = resolve(
+    fileURLToPath(import.meta.url),
+    '../..',
+    `templates/${variant}`,
+  );
+
+  cpSync(templateDir, root, { recursive: true });
+
+  console.log('\nDone. Now run:\n');
+  console.log(`cd ${projectName}\n`);
+  console.log('npm install\n');
+  console.log('npm run dev\n');
 };
 
-// eslint-disable-next-line no-console -- this console.log is needed to log errors
 init().catch(e => console.log(e));
+/* eslint-enable no-console */
