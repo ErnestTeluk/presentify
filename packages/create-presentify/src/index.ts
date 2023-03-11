@@ -1,42 +1,14 @@
 /* eslint-disable no-console */
-import { blue, bold, red, yellow } from 'kolorist';
-import minimist from 'minimist';
+import { bold, red } from 'kolorist';
 import { existsSync, readdirSync, mkdirSync, cpSync, rmSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import prompts from 'prompts';
 
-const getTargetDir = (targetDir: string | undefined) => {
-  return targetDir?.trim().replace(/\/+$/g, '');
-};
+import { argValue, cwd, defaultTargetDir, variants } from './consts';
+import { isDirEmpty, getTargetDir } from './helpers';
 
-const isDirEmpty = (path: string) => {
-  const files = readdirSync(path);
-  return files.length === 0 || (files.length === 1 && files[0] === '.git');
-};
-
-const argValue = minimist<{
-  t?: string;
-  template?: string;
-}>(process.argv.slice(2), { string: ['_'] });
-const cwd = process.cwd();
-
-const defaultTargetDir = 'presentify-project';
-
-const variants = [
-  {
-    name: 'js',
-    display: 'JavaScript',
-    color: yellow,
-  },
-  {
-    name: 'ts',
-    display: 'TypeScript',
-    color: blue,
-  },
-];
-
-const init = async () => {
+const cli = async () => {
   const argTargetDir = getTargetDir(argValue._[0]);
 
   let targetDir = argTargetDir || defaultTargetDir;
@@ -124,5 +96,5 @@ const init = async () => {
   console.log('npm run dev\n');
 };
 
-init().catch(e => console.log(e));
+cli().catch(e => console.log(e));
 /* eslint-enable no-console */
