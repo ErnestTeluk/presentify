@@ -4,7 +4,9 @@
   "private": true,
   "author": "Ernest Teluk",
   "scripts": {
-    "build": "tsc --build --incremental tsconfig.build.json"
+    "build": "tsc --build --incremental tsconfig.build.json",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -13,11 +15,15 @@
     ]
   },
   "dependencies": {
+    "@types/fs-extra": "11.0.1",
+    "@vitest/coverage-c8": "0.29.2",
     "eslint-config-vazco": "7.1.0",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-typescript": "3.5.3",
+    "fs-extra": "11.1.0",
     "husky": "8.0.0",
     "lerna": "6.0.1",
-    "lint-staged": "13.2.0"
+    "lint-staged": "13.2.0",
+    "vitest": "0.29.2"
   }
 }

@@ -28,16 +28,16 @@ const variants = [
   },
 ];
 
-const getTargetDir = (targetDir: string | undefined) => {
-  return targetDir?.trim().replace(/\/+$/g, '');
+export const getTargetDir = (targetDir: string | undefined) => {
+  return targetDir?.trim().replace(/[^a-zA-Z0-9-_]/g, '');
 };
 
-const isDirEmpty = (path: string) => {
+export const isDirEmpty = (path: string) => {
   const files = readdirSync(path);
   return files.length === 0 || (files.length === 1 && files[0] === '.git');
 };
 
-const cli = async () => {
+export const cli = async () => {
   const argTargetDir = getTargetDir(argValue._[0]);
 
   let targetDir = argTargetDir || defaultTargetDir;
