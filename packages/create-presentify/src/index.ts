@@ -30,16 +30,6 @@ const variants = [
     display: 'TypeScript',
     color: blue,
   },
-  {
-    name: 'js-swc',
-    display: 'JavaScript + SWC',
-    color: yellow,
-  },
-  {
-    name: 'ts-swc',
-    display: 'TypeScript + SWC',
-    color: blue,
-  },
 ];
 
 const init = async () => {
