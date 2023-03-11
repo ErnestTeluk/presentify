@@ -1,12 +1,41 @@
 /* eslint-disable no-console */
-import { bold, red } from 'kolorist';
+import { blue, bold, red, yellow } from 'kolorist';
+import minimist from 'minimist';
 import { existsSync, readdirSync, mkdirSync, cpSync, rmSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import prompts from 'prompts';
 
-import { argValue, cwd, defaultTargetDir, variants } from './consts';
-import { isDirEmpty, getTargetDir } from './helpers';
+const defaultTargetDir = 'presentify-project';
+
+const argValue = minimist<{
+  t?: string;
+  template?: string;
+}>(process.argv.slice(2), { string: ['_'] });
+
+const cwd = process.cwd();
+
+const variants = [
+  {
+    name: 'js',
+    display: 'JavaScript',
+    color: yellow,
+  },
+  {
+    name: 'ts',
+    display: 'TypeScript',
+    color: blue,
+  },
+];
+
+const getTargetDir = (targetDir: string | undefined) => {
+  return targetDir?.trim().replace(/\/+$/g, '');
+};
+
+const isDirEmpty = (path: string) => {
+  const files = readdirSync(path);
+  return files.length === 0 || (files.length === 1 && files[0] === '.git');
+};
 
 const cli = async () => {
   const argTargetDir = getTargetDir(argValue._[0]);
