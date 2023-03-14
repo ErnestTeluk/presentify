@@ -5,3 +5,4 @@ demo/package-lock.json
 packages/**/package-lock.json
 cjs
 esm
+/coverage
