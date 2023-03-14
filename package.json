@@ -4,7 +4,9 @@
   "private": true,
   "author": "Ernest Teluk",
   "scripts": {
-    "build": "tsc --build --incremental tsconfig.build.json"
+    "build": "tsc --build --incremental tsconfig.build.json",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -18,6 +20,8 @@
     "eslint-import-resolver-typescript": "3.5.3",
     "husky": "8.0.0",
     "lerna": "6.0.1",
-    "lint-staged": "13.2.0"
+    "lint-staged": "13.2.0",
+    "vitest": "0.29.2",
+    "@vitest/coverage-c8": "0.29.2"
   }
 }
