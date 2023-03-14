@@ -1,0 +1,23 @@
+{
+  "name": "presentify",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Ernest Teluk",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "files": [
+    "cjs/*.d.ts",
+    "cjs/*.js",
+    "esm/*.d.ts",
+    "esm/*.ts",
+    "src/*.ts",
+    "src/*.tsx"
+  ],
+  "peerDependencies": {
+    "@types/react": "^18.0.0",
+    "react": "^18.0.0"
+  },
+  "dependencies": {
+    "@mdx-js/react": "^2.3.0"
+  }
+}

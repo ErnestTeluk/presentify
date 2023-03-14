@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "cjs",
+    "rootDir": "src",
+    "module": "CommonJS",
+    "tsBuildInfoFile": "../../node_modules/.cache/presentify.cjs.tsbuildinfo"
+  },
+  "include": ["src"]
+}
