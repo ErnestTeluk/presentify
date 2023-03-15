@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "esm",
+    "rootDir": "src",
+    "module": "ES6",
+    "tsBuildInfoFile": "../../node_modules/.cache/presentify.esm.tsbuildinfo"
+  },
+  "include": ["src"]
+}
