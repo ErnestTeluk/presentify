@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it } from 'vitest';
 
-import { useQueryParams } from '../../src/hooks/useQueryParams';
+import { useQueryParams } from '../src/hooks/useQueryParams';
 
 describe('useQueryParams', () => {
   it('setParams', () => {
