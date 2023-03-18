@@ -16,14 +16,15 @@
   },
   "dependencies": {
     "@testing-library/react": "14.0.0",
-    "@vitest/coverage-c8": "0.29.2",
+    "@testing-library/user-event": "14.4.3",
     "eslint-config-vazco": "7.1.0",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-typescript": "3.5.3",
     "husky": "8.0.0",
+    "jsdom": "21.1.1",
     "lerna": "6.0.1",
     "lint-staged": "13.2.0",
     "vitest": "0.29.2",
-    "jsdom": "21.1.1"
+    "@vitest/coverage-istanbul": "0.29.3"
   }
 }

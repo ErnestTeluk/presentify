@@ -17,12 +17,7 @@ export interface PresentifyContextProps {
   onGoBackSlide: () => void;
 }
 
-const PresentifyContext = createContext<PresentifyContextProps>({
-  slides: [],
-  currentSlide: 0,
-  onGoNextSlide: () => undefined,
-  onGoBackSlide: () => undefined,
-});
+const PresentifyContext = createContext<PresentifyContextProps | null>(null);
 
 export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
   const { getParams, setParams } = useQueryParams();
