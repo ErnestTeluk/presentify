@@ -68,6 +68,20 @@ describe('PresentifyProvider', () => {
     render(<Test />);
     expect(screen.getByTestId('x').children).toHaveLength(2);
   });
+  it('show Not found page when query number was more than slides', () => {
+    window.history.pushState(
+      undefined,
+      '',
+      `${window.location
+        .toString()
+        .replace(window.location.search, '')}?page=3`,
+    );
+    render(<Test />);
+    expect(screen.getByTestId('x').children).toHaveLength(1);
+    expect(screen.getByTestId('x').children[0].innerHTML).toBe(
+      '404 - Not Found',
+    );
+  });
 });
 
 describe('Keyboard', () => {
