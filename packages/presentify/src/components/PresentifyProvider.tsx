@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 
 import { Keyboard } from './Keyboard';
+import { NotFound } from './NotFound';
 import { useQueryParams } from '../hooks/useQueryParams';
 import { splitSlides } from '../lib/splitSlides';
 
@@ -59,7 +60,7 @@ export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
   return (
     <PresentifyContext.Provider value={contextValue}>
       <Keyboard />
-      {slides[currentSlide]}
+      {slides[currentSlide] ? slides[currentSlide] : <NotFound />}
     </PresentifyContext.Provider>
   );
 };
