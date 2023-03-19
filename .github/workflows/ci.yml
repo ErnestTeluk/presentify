@@ -5,7 +5,7 @@ on:
     branches:
       - master
 jobs:
-  CI/CD:
+  CI_CD:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
