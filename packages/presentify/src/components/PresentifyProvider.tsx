@@ -1,3 +1,4 @@
+import { Global } from '@emotion/react';
 import React, {
   createContext,
   ReactNode,
@@ -8,14 +9,22 @@ import React, {
 
 import { Keyboard } from './Keyboard';
 import { NotFound } from './NotFound';
+import { Slide } from './Slide';
 import { useQueryParams } from '../hooks/useQueryParams';
 import { splitSlides } from '../lib/splitSlides';
+import { globalStyles } from '../styles/GlobalStyles.styled';
+import { Layout } from '../styles/Layout.styled';
 
 export interface PresentifyContextProps {
   slides: ReactNode[][];
   currentSlide: number;
   onGoNextSlide: () => void;
   onGoBackSlide: () => void;
+}
+
+interface Theme {
+  layout?: 'center' | 'normal';
+  backgroundImage?: string;
 }
 
 const PresentifyContext = createContext<PresentifyContextProps | null>(null);
@@ -59,8 +68,13 @@ export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <PresentifyContext.Provider value={contextValue}>
+      <Global styles={globalStyles} />
       <Keyboard />
-      {slides[currentSlide] ? slides[currentSlide] : <NotFound />}
+      <Layout>
+        <Slide>
+          {slides[currentSlide] ? slides[currentSlide] : <NotFound />}
+        </Slide>
+      </Layout>
     </PresentifyContext.Provider>
   );
 };

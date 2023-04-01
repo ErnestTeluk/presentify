@@ -10,7 +10,8 @@ enum Keys {
 }
 
 export const useKeyboard = () => {
-  const { onGoNextSlide, onGoBackSlide, currentSlide } = usePresentifyContext();
+  const context = usePresentifyContext();
+  const { onGoNextSlide, onGoBackSlide, currentSlide } = context || {};
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -18,13 +19,13 @@ export const useKeyboard = () => {
         case Keys.Right:
         case Keys.Up: {
           e.preventDefault();
-          onGoNextSlide();
+          onGoNextSlide && onGoNextSlide();
           break;
         }
         case Keys.Left:
         case Keys.Down: {
           e.preventDefault();
-          onGoBackSlide();
+          onGoBackSlide && onGoBackSlide();
           break;
         }
         default:

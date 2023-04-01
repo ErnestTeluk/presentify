@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": "packages",
-    "moduleResolution": "node",
+    "composite": true,
+    "declaration": true,
     "esModuleInterop": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "paths": { "presentify": ["presentify/src"] },
     "strict": true,
-    "paths": { "create-presentify": ["create-presentify/src"]},
-    "jsx": "react"
+    "target": "ES6"
   }
 }
