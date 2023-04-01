@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { expect, describe, it, afterEach, beforeEach } from 'vitest';
+import { expect, describe, it, afterEach } from 'vitest';
 
 import { PresentifyProvider } from '../src';
 
@@ -13,16 +13,14 @@ const keys = [
 ];
 
 const Test = () => (
-  <div data-testid="x">
-    <PresentifyProvider>
-      <div />
-      <div />
-      <hr />
-      <div />
-      <div />
-      <div />
-    </PresentifyProvider>
-  </div>
+  <PresentifyProvider>
+    <div />
+    <div />
+    <hr />
+    <div />
+    <div />
+    <div />
+  </PresentifyProvider>
 );
 
 afterEach(() => {
@@ -44,7 +42,7 @@ describe('PresentifyProvider', () => {
         .replace(window.location.search, '')}?page=1`,
     );
     render(<Test />);
-    expect(screen.getByTestId('x').children).toHaveLength(3);
+    expect(screen.getByTestId('slide').children).toHaveLength(3);
   });
   it('Set slide to 1 when ?page=0 query was provided', () => {
     window.history.pushState(
@@ -55,7 +53,7 @@ describe('PresentifyProvider', () => {
         .replace(window.location.search, '')}?page=0`,
     );
     render(<Test />);
-    expect(screen.getByTestId('x').children).toHaveLength(2);
+    expect(screen.getByTestId('slide').children).toHaveLength(2);
   });
   it('Set slide to 1 when non number query was provided', () => {
     window.history.pushState(
@@ -66,7 +64,7 @@ describe('PresentifyProvider', () => {
         .replace(window.location.search, '')}?page=test`,
     );
     render(<Test />);
-    expect(screen.getByTestId('x').children).toHaveLength(2);
+    expect(screen.getByTestId('slide').children).toHaveLength(2);
   });
   it('show Not found page when query number was more than slides', () => {
     window.history.pushState(
@@ -77,8 +75,8 @@ describe('PresentifyProvider', () => {
         .replace(window.location.search, '')}?page=3`,
     );
     render(<Test />);
-    expect(screen.getByTestId('x').children).toHaveLength(1);
-    expect(screen.getByTestId('x').children[0].innerHTML).toBe(
+    expect(screen.getByTestId('slide').children).toHaveLength(1);
+    expect(screen.getByTestId('slide').children[0].innerHTML).toBe(
       '404 - Not Found',
     );
   });
@@ -96,22 +94,22 @@ describe('Keyboard', () => {
       );
       render(<Test />);
       await userEvent.keyboard(`{${name}}`);
-      expect(screen.getByTestId('x').children).toHaveLength(elements);
+      expect(screen.getByTestId('slide').children).toHaveLength(elements);
     }),
   );
   it('ArrowUp go to first slide when clicked on last slide', async () => {
     render(<Test />);
     await userEvent.keyboard('{ArrowUp}{ArrowUp}');
-    expect(screen.getByTestId('x').children).toHaveLength(2);
+    expect(screen.getByTestId('slide').children).toHaveLength(2);
   });
   it('ArrowDown go to last slide when clicked on first slide', async () => {
     render(<Test />);
     await userEvent.keyboard('{ArrowDown}');
-    expect(screen.getByTestId('x').children).toHaveLength(3);
+    expect(screen.getByTestId('slide').children).toHaveLength(3);
   });
   it('not used key was pressed', async () => {
     render(<Test />);
     await userEvent.keyboard('{Enter}');
-    expect(screen.getByTestId('x').children).toHaveLength(2);
+    expect(screen.getByTestId('slide').children).toHaveLength(2);
   });
 });
