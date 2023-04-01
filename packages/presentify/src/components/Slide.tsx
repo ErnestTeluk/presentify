@@ -16,5 +16,5 @@ const SliderWrapper = styled.div`
 `;
 
 export const Slide = ({ children }: SlideProps) => (
-  <SliderWrapper>{children}</SliderWrapper>
+  <SliderWrapper data-testid="slide">{children}</SliderWrapper>
 );
