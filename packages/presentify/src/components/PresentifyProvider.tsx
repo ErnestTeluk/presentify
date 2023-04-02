@@ -11,21 +11,11 @@ import { Keyboard } from './Keyboard';
 import { NotFound } from './NotFound';
 import { Slide } from './Slide';
 import { useQueryParams } from '../hooks/useQueryParams';
+import { getSlideOptions } from '../lib/getSlideOptions';
 import { splitSlides } from '../lib/splitSlides';
 import { globalStyles } from '../styles/GlobalStyles.styled';
 import { Layout } from '../styles/Layout.styled';
-
-export interface PresentifyContextProps {
-  slides: ReactNode[][];
-  currentSlide: number;
-  onGoNextSlide: () => void;
-  onGoBackSlide: () => void;
-}
-
-interface Theme {
-  layout?: 'center' | 'normal';
-  backgroundImage?: string;
-}
+import { PresentifyContextProps } from '../types/types';
 
 const PresentifyContext = createContext<PresentifyContextProps | null>(null);
 
@@ -42,6 +32,7 @@ export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
   }, [currentSlide, setParams]);
 
   const slides = splitSlides({ children });
+  const { slidesWithoutOptions, options } = getSlideOptions({ slides });
   const numberOfSlides = slides.length - 1;
 
   const onGoNextSlide = () =>
@@ -72,7 +63,11 @@ export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
       <Keyboard />
       <Layout>
         <Slide>
-          {slides[currentSlide] ? slides[currentSlide] : <NotFound />}
+          {slidesWithoutOptions[currentSlide] ? (
+            slidesWithoutOptions[currentSlide]
+          ) : (
+            <NotFound />
+          )}
         </Slide>
       </Layout>
     </PresentifyContext.Provider>

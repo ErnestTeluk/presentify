@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-type SlideProps = {
-  children: ReactNode;
-};
+import { SlideProps } from '../types/types';
 
 const SliderWrapper = styled.div`
   width: 100%;
