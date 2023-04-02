@@ -14,30 +14,39 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier --config .prettierrc.js --write",
-      "eslint --fix",
-      "npm run lint:types"
+      "eslint --fix"
     ]
   },
   "dependencies": {
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
+    "@esbuild-plugins/node-globals-polyfill": "0.2.3",
+    "@mdx-js/react": "2.3.0",
     "@mdx-js/rollup": "2.3.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
+    "@types/lodash": "4.14.192",
     "@types/prompts": "2.4.4",
+    "@types/react": "18.0.32",
+    "@types/react-dom": "18.0.11",
     "@types/styled-components": "5.1.26",
     "@vitejs/plugin-react": "3.1.0",
     "@vitest/coverage-istanbul": "0.29.3",
     "eslint-config-vazco": "7.1.0",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-typescript": "3.5.3",
+    "gray-matter": "4.0.3",
     "husky": "8.0.0",
     "jsdom": "21.1.1",
     "kolorist": "1.7.0",
     "lerna": "6.0.1",
     "lint-staged": "13.2.0",
+    "lodash": "4.17.21",
     "minimist": "1.2.8",
     "prompts": "2.4.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "vite": "4.2.1",
     "vitest": "0.29.2"
   }

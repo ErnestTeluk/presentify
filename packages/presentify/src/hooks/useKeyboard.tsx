@@ -1,13 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { usePresentifyContext } from '../components/PresentifyProvider';
-
-enum Keys {
-  Right = 'ArrowRight',
-  Left = 'ArrowLeft',
-  Up = 'ArrowUp',
-  Down = 'ArrowDown',
-}
+import { Keys } from '../types/types';
 
 export const useKeyboard = () => {
   const context = usePresentifyContext();
