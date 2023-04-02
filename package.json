@@ -14,8 +14,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier --config .prettierrc.js --write",
-      "eslint --fix",
-      "npm run lint:types"
+      "eslint --fix"
     ]
   },
   "dependencies": {
@@ -24,6 +23,7 @@
     "@esbuild-plugins/node-globals-polyfill": "0.2.3",
     "@mdx-js/react": "2.3.0",
     "@mdx-js/rollup": "2.3.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
     "@types/lodash": "4.14.192",

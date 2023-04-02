@@ -62,7 +62,11 @@ export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
       <Global styles={globalStyles} />
       <Keyboard />
       <Layout>
-        <Slide>
+        <Slide
+          options={options.find(
+            ({ slideNumber }) => slideNumber === currentSlide,
+          )}
+        >
           {slidesWithoutOptions[currentSlide] ? (
             slidesWithoutOptions[currentSlide]
           ) : (

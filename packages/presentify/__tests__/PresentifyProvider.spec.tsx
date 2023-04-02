@@ -1,9 +1,12 @@
+import matchers from '@testing-library/jest-dom/matchers';
 import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { expect, describe, it, afterEach } from 'vitest';
 
 import { PresentifyProvider } from '../src';
+
+expect.extend(matchers);
 
 const keys = [
   { name: 'ArrowUp', startFrom: 0, elements: 3 },
@@ -12,8 +15,11 @@ const keys = [
   { name: 'ArrowLeft', startFrom: 1, elements: 2 },
 ];
 
+const string = '+++\nlayout: "normal"\n+++';
+
 const Test = () => (
   <PresentifyProvider>
+    <p>{string}</p>
     <div />
     <div />
     <hr />
@@ -33,6 +39,30 @@ afterEach(() => {
 });
 
 describe('PresentifyProvider', () => {
+  it('Pass slide options', () => {
+    window.history.pushState(
+      undefined,
+      '',
+      `${window.location
+        .toString()
+        .replace(window.location.search, '')}?page=0`,
+    );
+    render(<Test />);
+    expect(screen.getByTestId('slide').children).toHaveLength(2);
+    expect(screen.getByTestId('slide')).not.toHaveStyle('display: flex');
+  });
+  it('Not pass slide options', () => {
+    window.history.pushState(
+      undefined,
+      '',
+      `${window.location
+        .toString()
+        .replace(window.location.search, '')}?page=1`,
+    );
+    render(<Test />);
+    expect(screen.getByTestId('slide').children).toHaveLength(3);
+    expect(screen.getByTestId('slide')).toHaveStyle('display: flex');
+  });
   it('Set slide to 2 when ?page=1 query was provided', () => {
     window.history.pushState(
       undefined,

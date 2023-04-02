@@ -14,6 +14,13 @@ export type Options = {
   options: string;
 };
 
+export type LayoutOptions = {
+  parsedOptions: Pick<
+    { [p: string]: any },
+    'backgroundColor' | 'layout' | 'backgroundImg' | 'className'
+  >;
+} & Options;
+
 export interface PresentifyContextProps {
   slides: ReactNode[][];
   currentSlide: number;
@@ -23,4 +30,5 @@ export interface PresentifyContextProps {
 
 export type SlideProps = {
   children: ReactNode;
+  options: LayoutOptions | undefined;
 };
