@@ -6,12 +6,16 @@
   "scripts": {
     "build": "tsc --build --incremental tsconfig.build.json",
     "test": "vitest run",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "lint:code": "eslint --cache --cache-location node_modules/.cache/eslint --cache-strategy content --ext ts,tsx .",
+    "lint:types": "npm run build",
+    "lint": "npm run lint:code && npm run lint:types"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier --config .prettierrc.js --write",
-      "eslint --fix"
+      "eslint --fix",
+      "npm run lint:types"
     ]
   },
   "dependencies": {
@@ -19,9 +23,9 @@
     "@emotion/styled": "11.10.6",
     "@esbuild-plugins/node-globals-polyfill": "0.2.3",
     "@mdx-js/react": "2.3.0",
-    "@mdx-js/rollup": "2.3.0",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
+    "@types/prompts": "2.4.4",
     "@types/lodash": "4.14.192",
     "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
@@ -34,12 +38,15 @@
     "gray-matter": "4.0.3",
     "husky": "8.0.0",
     "jsdom": "21.1.1",
+    "kolorist": "1.7.0",
     "lerna": "6.0.1",
     "lint-staged": "13.2.0",
     "lodash": "4.17.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "vite": "4.2.1",
+    "minimist": "1.2.8",
+    "prompts": "2.4.2",
     "vitest": "0.29.2"
   }
 }
