@@ -6,12 +6,16 @@
   "scripts": {
     "build": "tsc --build --incremental tsconfig.build.json",
     "test": "vitest run",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "lint:code": "eslint --cache --cache-location node_modules/.cache/eslint --cache-strategy content --ext ts,tsx .",
+    "lint:types": "npm run build",
+    "lint": "npm run lint:code && npm run lint:types"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier --config .prettierrc.js --write",
-      "eslint --fix"
+      "eslint --fix",
+      "npm run lint:types"
     ]
   },
   "dependencies": {
