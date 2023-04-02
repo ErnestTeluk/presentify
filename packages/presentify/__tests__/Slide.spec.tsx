@@ -1,11 +1,15 @@
 import matchers from '@testing-library/jest-dom/matchers';
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
-import { expect, describe, it } from 'vitest';
+import { expect, describe, it, afterEach } from 'vitest';
 
 expect.extend(matchers);
 
 import { Slide } from '../src/components/Slide';
+
+afterEach(() => {
+  cleanup();
+});
 
 describe('Slide', () => {
   it('No Options', () => {
