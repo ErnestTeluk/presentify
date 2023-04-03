@@ -1,15 +1,19 @@
-import matter from 'gray-matter';
 import { pick } from 'lodash';
 
-import { Options } from '../types/types';
-export const parseOptions = ({ options }: { options: Options[] }) =>
-  options.map(option => {
-    const { data } = matter(option.options, { delimiters: '+++' });
-    const slideOptions = pick(data, [
-      'layout',
-      'backgroundColor',
-      'backgroundImg',
-      'className',
-    ]);
-    return { ...option, parsedOptions: slideOptions };
-  });
+export const parseOptions = (options: string | undefined) => {
+  if (!options) {
+    return undefined;
+  }
+  const optionsWithoutPlusesAndNewLines = options
+    .replace(/[+]/gs, '')
+    .replace(/(\r\n|\n|\r|\s)/gm, '');
+  const parsedOptions = Object.fromEntries(
+    optionsWithoutPlusesAndNewLines.split(',').map(i => i.split(':')),
+  );
+  return pick(parsedOptions, [
+    'layout',
+    'className',
+    'backgroundColor',
+    'backgroundImg',
+  ]);
+};

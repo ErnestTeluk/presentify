@@ -20,7 +20,6 @@
   "dependencies": {
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
-    "@esbuild-plugins/node-globals-polyfill": "0.2.3",
     "@mdx-js/react": "2.3.0",
     "@mdx-js/rollup": "2.3.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -36,7 +35,6 @@
     "eslint-config-vazco": "7.1.0",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-typescript": "3.5.3",
-    "gray-matter": "4.0.3",
     "husky": "8.0.0",
     "jsdom": "21.1.1",
     "kolorist": "1.7.0",

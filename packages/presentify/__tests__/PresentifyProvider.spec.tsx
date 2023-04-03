@@ -15,7 +15,7 @@ const keys = [
   { name: 'ArrowLeft', startFrom: 1, elements: 2 },
 ];
 
-const string = '+++\nlayout: "normal"\n+++';
+const string = '+++\nlayout: normal\n+++';
 
 const Test = () => (
   <PresentifyProvider>

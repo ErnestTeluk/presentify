@@ -32,7 +32,6 @@ export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
   }, [currentSlide, setParams]);
 
   const slides = splitSlides({ children });
-  const { slidesWithoutOptions, options } = getSlideOptions({ slides });
   const numberOfSlides = slides.length - 1;
 
   const onGoNextSlide = () =>
@@ -62,16 +61,8 @@ export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
       <Global styles={globalStyles} />
       <Keyboard />
       <Layout>
-        <Slide
-          options={options.find(
-            ({ slideNumber }) => slideNumber === currentSlide,
-          )}
-        >
-          {slidesWithoutOptions[currentSlide] ? (
-            slidesWithoutOptions[currentSlide]
-          ) : (
-            <NotFound />
-          )}
+        <Slide>
+          {slides[currentSlide] ? slides[currentSlide] : <NotFound />}
         </Slide>
       </Layout>
     </PresentifyContext.Provider>

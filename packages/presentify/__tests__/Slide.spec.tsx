@@ -14,7 +14,7 @@ afterEach(() => {
 describe('Slide', () => {
   it('No Options', () => {
     render(
-      <Slide options={undefined}>
+      <Slide>
         <div />
         <div />
       </Slide>,
@@ -23,18 +23,8 @@ describe('Slide', () => {
   });
   it('Layout option', () => {
     render(
-      <Slide
-        options={{
-          slideNumber: 0,
-          options: 'test',
-          parsedOptions: {
-            layout: 'normal',
-            backgroundImg: undefined,
-            backgroundColor: undefined,
-            className: undefined,
-          },
-        }}
-      >
+      <Slide>
+        <p>+++layout:normal+++</p>
         <div />
         <div />
       </Slide>,
@@ -43,18 +33,8 @@ describe('Slide', () => {
   });
   it('BackgroundImg option', () => {
     render(
-      <Slide
-        options={{
-          slideNumber: 0,
-          options: 'test',
-          parsedOptions: {
-            layout: undefined,
-            backgroundImg: 'linkToImg',
-            backgroundColor: undefined,
-            className: undefined,
-          },
-        }}
-      >
+      <Slide>
+        <p>+++backgroundImg: linkToImg +++</p>
         <div />
         <div />
       </Slide>,
@@ -66,18 +46,8 @@ describe('Slide', () => {
   });
   it('BackgroundColor option', () => {
     render(
-      <Slide
-        options={{
-          slideNumber: 0,
-          options: 'test',
-          parsedOptions: {
-            layout: undefined,
-            backgroundImg: undefined,
-            backgroundColor: 'red',
-            className: undefined,
-          },
-        }}
-      >
+      <Slide>
+        <p>+++backgroundColor: red+++</p>
         <div />
         <div />
       </Slide>,
@@ -87,18 +57,8 @@ describe('Slide', () => {
   });
   it('Multiple options', () => {
     render(
-      <Slide
-        options={{
-          slideNumber: 0,
-          options: 'test',
-          parsedOptions: {
-            layout: 'normal',
-            backgroundImg: undefined,
-            backgroundColor: 'red',
-            className: undefined,
-          },
-        }}
-      >
+      <Slide>
+        <p>+++layout: normal, backgroundColor: red+++</p>
         <div />
         <div />
       </Slide>,
@@ -108,18 +68,8 @@ describe('Slide', () => {
   });
   it('ClassName option', () => {
     render(
-      <Slide
-        options={{
-          slideNumber: 0,
-          options: 'test',
-          parsedOptions: {
-            layout: undefined,
-            backgroundImg: undefined,
-            backgroundColor: undefined,
-            className: 'test',
-          },
-        }}
-      >
+      <Slide>
+        <p>+++className: test+++</p>
         <div />
         <div />
       </Slide>,

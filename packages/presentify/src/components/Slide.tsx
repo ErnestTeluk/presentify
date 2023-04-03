@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-import { SlideProps } from '../types/types';
+import { getSlideOptions } from '../lib/getSlideOptions';
 
 const SliderWrapper = styled.div<{
   backgroundColor: string;
@@ -34,10 +34,9 @@ const SliderWrapper = styled.div<{
         `}
 `;
 
-export const Slide = ({ children, options }: SlideProps) => {
-  const { parsedOptions } = options || {};
-  const { className, backgroundColor, backgroundImg, layout } =
-    parsedOptions || {};
+export const Slide = ({ children }: { children: ReactNode }) => {
+  const { slideWithoutOptions, options } = getSlideOptions(children);
+  const { className, backgroundColor, backgroundImg, layout } = options || {};
   return (
     <SliderWrapper
       data-testid="slide"
@@ -46,7 +45,7 @@ export const Slide = ({ children, options }: SlideProps) => {
       backgroundImg={backgroundImg}
       layout={layout}
     >
-      {children}
+      {slideWithoutOptions}
     </SliderWrapper>
   );
 };
