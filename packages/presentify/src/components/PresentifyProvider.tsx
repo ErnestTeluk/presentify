@@ -11,7 +11,6 @@ import { Keyboard } from './Keyboard';
 import { NotFound } from './NotFound';
 import { Slide } from './Slide';
 import { useQueryParams } from '../hooks/useQueryParams';
-import { getSlideOptions } from '../lib/getSlideOptions';
 import { splitSlides } from '../lib/splitSlides';
 import { globalStyles } from '../styles/GlobalStyles.styled';
 import { Layout } from '../styles/Layout.styled';

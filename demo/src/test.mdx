@@ -3,10 +3,22 @@ import { PresentifyProvider } from '../../packages/presentify/src'
 <PresentifyProvider>
 +++
 layout: center,
-backgroundColor: red,
 className: test
 +++
 # test
 ---
 # test 2
+```jsx showLineNumbers highlightLines="1,2,5-6"
+function Counter({initialCount}) {
+  const [count, setCount] = useState(initialCount);
+  return (
+    <>
+      counter: {count}
+      <button onClick={() => setCount(initialCount)}>reset</button>
+      <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
+    </>
+  );
+}
+```
 </PresentifyProvider>
