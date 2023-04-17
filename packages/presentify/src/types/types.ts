@@ -7,19 +7,15 @@ export enum Keys {
   Down = 'ArrowDown',
 }
 
-export type Slide = ReactElement[];
-
-export type Options = {
-  option: string;
-};
-
 export interface PresentifyContextProps {
   slides: ReactNode[][];
   currentSlide: number;
+  options?: Options;
   onGoNextSlide: () => void;
   onGoBackSlide: () => void;
 }
 
-export type SlideProps = {
-  children: Slide;
-};
+export interface Options {
+  theme?: 'dark' | 'light';
+  useFiraCode?: boolean;
+}
