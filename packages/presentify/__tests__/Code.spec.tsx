@@ -4,6 +4,7 @@ import React from 'react';
 import { describe, it, expect, afterEach } from 'vitest';
 
 import { Code } from '../src/components/Code';
+import { PresentifyProvider } from '../src/components/PresentifyProvider';
 
 expect.extend(matchers);
 
@@ -56,6 +57,18 @@ describe('Code', () => {
     );
     expect(screen.getByTestId('code').children[0]).not.toHaveStyle(
       'opacity: 0.3;',
+    );
+  });
+  it('should render Fira Code correctly', () => {
+    render(
+      <PresentifyProvider options={{ useFiraCode: true }}>
+        <Code showLineNumbers highlightLines="1">
+          <code className="language-js">const test = 'test';</code>
+        </Code>
+      </PresentifyProvider>,
+    );
+    expect(screen.getByTestId('code').children[0]).toHaveStyle(
+      'font-family: Fira Code,monospace;',
     );
   });
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Test from './test.mdx';

@@ -14,11 +14,17 @@ import { useQueryParams } from '../hooks/useQueryParams';
 import { splitSlides } from '../lib/splitSlides';
 import { globalStyles } from '../styles/GlobalStyles.styled';
 import { Layout } from '../styles/Layout.styled';
-import { PresentifyContextProps } from '../types/types';
+import { Options, PresentifyContextProps } from '../types/types';
 
 const PresentifyContext = createContext<PresentifyContextProps | null>(null);
 
-export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
+export const PresentifyProvider = ({
+  children,
+  options,
+}: {
+  children: ReactNode;
+  options?: Options;
+}) => {
   const { getParams, setParams } = useQueryParams();
   const pageFromParams = parseInt(getParams('page') || '0', 10);
 
@@ -50,6 +56,7 @@ export const PresentifyProvider = ({ children }: { children: ReactNode }) => {
 
   const contextValue = {
     slides,
+    options,
     currentSlide,
     onGoNextSlide,
     onGoBackSlide,
