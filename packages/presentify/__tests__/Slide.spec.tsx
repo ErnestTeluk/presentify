@@ -5,6 +5,7 @@ import { expect, describe, it, afterEach } from 'vitest';
 
 expect.extend(matchers);
 
+import { PresentifyProvider } from '../src/components/PresentifyProvider';
 import { Slide } from '../src/components/Slide';
 
 afterEach(() => {
@@ -75,5 +76,27 @@ describe('Slide', () => {
       </Slide>,
     );
     expect(screen.getByTestId('slide')).toHaveClass('test');
+  });
+  it('Correctly use globalOptions', () => {
+    render(
+      <PresentifyProvider options={{ backgroundColor: 'red' }}>
+        <div />
+        <div />
+      </PresentifyProvider>,
+    );
+
+    expect(screen.getByTestId('slide')).toHaveStyle('background-color: red');
+  });
+  it('Correctly use globalOptions and slideOptions', () => {
+    const option = '+++\nbackgroundColor: blue\n+++';
+    render(
+      <PresentifyProvider options={{ backgroundColor: 'red' }}>
+        <p>{option}</p>
+        <div />
+        <div />
+      </PresentifyProvider>,
+    );
+
+    expect(screen.getByTestId('slide')).toHaveStyle('background-color: blue');
   });
 });

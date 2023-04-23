@@ -18,4 +18,8 @@ export interface PresentifyContextProps {
 export interface Options {
   theme?: 'dark' | 'light';
   useFiraCode?: boolean;
+  className?: string;
+  backgroundColor?: string;
+  backgroundImg?: string;
+  layout?: string;
 }
