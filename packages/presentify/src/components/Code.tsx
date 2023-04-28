@@ -32,7 +32,11 @@ export const Code = ({
       theme={getTheme(options?.theme)}
     >
       {({ tokens, getLineProps, getTokenProps }) => (
-        <pre data-testid="code" className={className}>
+        <pre
+          data-testid="code"
+          className={className}
+          style={{ width: '100vw', padding: '20px' }}
+        >
           {tokens.map((line, i: number) => (
             <Line
               useFiraCode={options?.useFiraCode}
