@@ -6,9 +6,13 @@ export const LineNumber = styled.span<{ lineWidth: number }>`
   user-select: none;
 `;
 
-export const Line = styled.div<{ isHighlight: boolean; useFiraCode?: boolean }>`
+export const Line = styled.div<{
+  isHighlight: boolean;
+  useFiraCode?: boolean;
+  containerWidth: number;
+}>`
   ${({ isHighlight }) => (isHighlight ? '' : 'opacity: 0.3')};
-  font-size: 2em;
+  font-size: calc((100vw - 40px) / 50);
   ${({ useFiraCode }) =>
     useFiraCode ? 'font-family: Fira Code, monospace;' : ''};
 `;
