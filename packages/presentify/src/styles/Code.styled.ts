@@ -9,7 +9,6 @@ export const LineNumber = styled.span<{ lineWidth: number }>`
 export const Line = styled.div<{
   isHighlight: boolean;
   useFiraCode?: boolean;
-  containerWidth: number;
 }>`
   ${({ isHighlight }) => (isHighlight ? '' : 'opacity: 0.3')};
   font-size: calc((100vw - 40px) / 50);

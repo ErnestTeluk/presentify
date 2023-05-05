@@ -19,6 +19,17 @@ jobs:
       - name: Test
         run: npm run coverage
       - name: Report coverage
-        uses: codecov/codecov-action@v3.1.1
+        uses: codecov/codecov-action@v3.1.3
         with:
           fail_ci_if_error: true
+      - name: Build docs
+        run: npm --prefix website run build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/build
+          force_orphan: true
+          allow_empty_commit: true
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'

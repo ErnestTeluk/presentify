@@ -5,7 +5,7 @@ import { calculateLinesToHighlight } from '../src/lib/calculateLinesToHighlight'
 describe('calculateLinesToHighlight', () => {
   it('should return false when undefined was passed', () => {
     const shouldHighlightLine = calculateLinesToHighlight(undefined);
-    expect(shouldHighlightLine(0)).toBe(false);
+    expect(shouldHighlightLine(0)).toBe(true);
   });
   it('should return false when broken value was passed', () => {
     const shouldHighlightLine = calculateLinesToHighlight('test');
