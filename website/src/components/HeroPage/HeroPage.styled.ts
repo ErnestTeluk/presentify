@@ -31,10 +31,10 @@ export const Content = styled.div`
   height: auto;
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  align-items: center;
 
   @media screen and (max-width: 1024px) {
+    justify-content: center;
+    align-items: center;
     width: 80%;
   }
 
