@@ -5,7 +5,8 @@
     "outDir": "cjs",
     "rootDir": "src",
     "module": "CommonJS",
-    "tsBuildInfoFile": "../../node_modules/.cache/presentify.cjs.tsbuildinfo"
+    "tsBuildInfoFile": "../../node_modules/.cache/presentify.cjs.tsbuildinfo",
+    "skipLibCheck": true
   },
   "include": ["src"]
 }

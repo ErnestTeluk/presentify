@@ -5,7 +5,8 @@
     "outDir": "esm",
     "rootDir": "src",
     "module": "ES6",
-    "tsBuildInfoFile": "../../node_modules/.cache/presentify.esm.tsbuildinfo"
+    "tsBuildInfoFile": "../../node_modules/.cache/presentify.esm.tsbuildinfo",
+    "skipLibCheck": true
   },
   "include": ["src"]
 }

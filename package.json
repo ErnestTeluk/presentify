@@ -1,10 +1,10 @@
 {
   "name": "presentify",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "author": "Ernest Teluk",
   "scripts": {
-    "build": "tsc --build --incremental tsconfig.build.json",
+    "build": "tsc --build --incremental tsconfig.build.json && npm --prefix packages/create-presentify run build",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "lint:code": "eslint --cache --cache-location node_modules/.cache/eslint --cache-strategy content --ext ts,tsx .",
@@ -47,6 +47,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "remark-mdx-code-meta": "2.0.0",
+    "unbuild": "1.2.1",
     "vite": "4.2.1",
     "vitest": "0.29.2"
   }

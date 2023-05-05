@@ -2,7 +2,7 @@
 import { blue, bold, red, yellow } from 'kolorist';
 import minimist from 'minimist';
 import { existsSync, readdirSync, mkdirSync, cpSync, rmSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import prompts from 'prompts';
 
@@ -112,8 +112,8 @@ const cli = async () => {
   }
 
   const templateDir = resolve(
-    fileURLToPath(import.meta.url),
-    '../..',
+    dirname(fileURLToPath(import.meta.url)),
+    '..',
     `templates/${variant}`,
   );
 

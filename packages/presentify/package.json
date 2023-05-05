@@ -17,12 +17,12 @@
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
   "files": [
-    "cjs/*.d.ts",
-    "cjs/*.js",
-    "esm/*.d.ts",
-    "esm/*.ts",
-    "src/*.ts",
-    "src/*.tsx"
+    "cjs/**/*.d.ts",
+    "cjs/**/*.js",
+    "esm/**/*.d.ts",
+    "esm/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "peerDependencies": {
     "@emotion/react": "^11.10.6",

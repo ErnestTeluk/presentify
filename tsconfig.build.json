@@ -1,7 +1,6 @@
 {
   "files": [],
   "references": [
-    { "path": "packages/create-presentify/tsconfig.json" },
     { "path":  "packages/presentify/tsconfig.cjs.json"},
     { "path":  "packages/presentify/tsconfig.esm.json"}
   ]
