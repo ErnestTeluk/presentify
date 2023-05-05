@@ -1,8 +1,19 @@
 {
   "name": "presentify",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Ernest Teluk",
+  "description": "Core package of Presentify",
+  "repository": "https://github.com/ErnestTeluk/presentify/tree/main/packages/presentify",
+  "bugs": "https://github.com/ErnestTeluk/presentify/issues",
+  "keywords": [
+    "react",
+    "markdown",
+    "deck",
+    "slides",
+    "presentation-deck",
+    "vite"
+  ],
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
   "files": [

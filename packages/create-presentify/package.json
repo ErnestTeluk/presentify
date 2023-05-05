@@ -1,7 +1,18 @@
 {
   "name": "create-presentify",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Ernest Teluk",
+  "description": "CLI for presentify",
+  "repository": "https://github.com/ErnestTeluk/presentify/tree/main/packages/create-presentify",
+  "bugs": "https://github.com/ErnestTeluk/presentify/issues",
+  "keywords": [
+    "react",
+    "markdown",
+    "deck",
+    "slides",
+    "presentation-deck",
+    "vite"
+  ],
   "type": "module",
   "license": "MIT",
   "main": "index.js",
