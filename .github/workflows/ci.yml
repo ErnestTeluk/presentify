@@ -13,7 +13,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3.6.0
       - name: Install Packages
-        run: npm ci --no-audit
+        run: npm ci --no-audit --legacy-peer-deps
       - name: Lint
         run: npm run lint
       - name: Test
