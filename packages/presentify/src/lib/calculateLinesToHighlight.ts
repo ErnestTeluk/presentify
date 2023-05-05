@@ -8,5 +8,8 @@ export const calculateLinesToHighlight = (
     const lineNumbers = rangeParser(strlineNumbers);
     return (index: number) => lineNumbers.includes(index + 1);
   }
+  if (!highlightLines) {
+    return () => true;
+  }
   return () => false;
 };
