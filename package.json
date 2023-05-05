@@ -18,17 +18,12 @@
     ]
   },
   "dependencies": {
-    "@docusaurus/core": "^2.4.0",
-    "@docusaurus/module-type-aliases": "^2.4.0",
-    "@docusaurus/preset-classic": "^2.4.0",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
-    "@mdx-js/react": "^2.3.0",
     "@mdx-js/rollup": "2.3.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
-    "@tsconfig/docusaurus": "^1.0.7",
     "@types/lodash": "4.14.192",
     "@types/prompts": "2.4.4",
     "@types/react": "18.0.32",
