@@ -63,6 +63,13 @@ const config = {
         style: 'dark',
         copyright: `Copyright © ${new Date().getFullYear()} Ernest Teluk, All Rights Reserved.`,
       },
+      algolia: {
+        apiKey: '17f03502a8a7e9902498823a788b50b8',
+        appId: '6LFE2FYNAP',
+        contextualSearch: false,
+        indexName: 'presentify',
+        searchPagePath: false,
+      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
