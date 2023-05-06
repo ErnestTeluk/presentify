@@ -1,3 +1,4 @@
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import styled from '@emotion/styled';
 import { Presentation } from '@site/src/components/Presentation';
 import Layout from '@theme/Layout';
@@ -39,13 +40,17 @@ export default function Playground(): JSX.Element {
 
   return (
     <Layout title="Check how it works">
-      <StyledMain>
-        <EditorComponent
-          editorValue={editorValue}
-          setEditorValue={setEditorValue}
-        />
-        <Presentation editorValue={editorValue} />
-      </StyledMain>
+      <BrowserOnly>
+        {() => (
+          <StyledMain>
+            <EditorComponent
+              editorValue={editorValue}
+              setEditorValue={setEditorValue}
+            />
+            <Presentation editorValue={editorValue} />
+          </StyledMain>
+        )}
+      </BrowserOnly>
     </Layout>
   );
 }
