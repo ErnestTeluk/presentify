@@ -49,15 +49,23 @@ describe('Code', () => {
       '1',
     );
   });
-  it('should render correctly with highlightLines', () => {
+  it('should render correctly without highlightLines', () => {
     render(
-      <Code showLineNumbers highlightLines="1">
+      <Code showLineNumbers>
         <code className="language-js">const test = 'test';</code>
       </Code>,
     );
     expect(screen.getByTestId('code').children[0]).not.toHaveStyle(
       'opacity: 0.3;',
     );
+  });
+  it('should render correctly with highlightLines', () => {
+    render(
+      <Code showLineNumbers highlightLines="0">
+        <code className="language-js">const test = 'test';</code>
+      </Code>,
+    );
+    expect(screen.getByTestId('code').children[0]).toHaveStyle('opacity: 0.3;');
   });
   it('should render Fira Code correctly', () => {
     render(

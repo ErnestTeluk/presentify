@@ -1,11 +1,11 @@
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import React, { Key, ReactElement } from 'react';
+import React, { Key, ReactElement, useEffect, useRef, useState } from 'react';
 
 import { usePresentifyContext } from './PresentifyProvider';
 import { calculateLinesToHighlight } from '../lib/calculateLinesToHighlight';
 import { getLineNumberWidth } from '../lib/getLineNumberWidth';
 import { getTheme } from '../lib/getTheme';
-import { Line, LineNumber } from '../styles/Code.styled';
+import { Line, LineNumber, StyledPre } from '../styles/Code.styled';
 
 export const Code = ({
   children,
@@ -16,6 +16,8 @@ export const Code = ({
   showLineNumbers?: boolean;
   highlightLines?: string;
 }) => {
+  const [width, setWidth] = useState(0);
+  const ref = useRef<HTMLPreElement>(null);
   const context = usePresentifyContext();
   const { options } = context || {};
   const className = children.props.className || '';
@@ -23,6 +25,23 @@ export const Code = ({
   const language = className.replace(/language-/, '');
   const lineWidth = getLineNumberWidth(code);
   const shouldHighlightLine = calculateLinesToHighlight(highlightLines);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(ref.current?.offsetWidth || 0);
+    };
+
+    // Initial measurement
+    handleResize();
+
+    // Add event listener on component mount
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <Highlight
@@ -32,13 +51,10 @@ export const Code = ({
       theme={getTheme(options?.theme)}
     >
       {({ tokens, getLineProps, getTokenProps }) => (
-        <pre
-          data-testid="code"
-          className={className}
-          style={{ width: '100vw', padding: '20px' }}
-        >
+        <StyledPre data-testid="code" className={className} ref={ref}>
           {tokens.map((line, i: number) => (
             <Line
+              elementWidth={width}
               useFiraCode={options?.useFiraCode}
               key={i}
               {...getLineProps({ line, key: i })}
@@ -52,7 +68,7 @@ export const Code = ({
               ))}
             </Line>
           ))}
-        </pre>
+        </StyledPre>
       )}
     </Highlight>
   );
