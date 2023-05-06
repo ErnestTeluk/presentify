@@ -8,6 +8,7 @@
 
 <p align="center">
     <strong><a href="https://ernestteluk.github.io/presentify/docs/api-reference/presentify-provider">API Reference</a></strong> |
+    <strong><a href="https://ernestteluk.github.io/presentify/playground">Playground</a></strong> |
     <strong><a href="https://github.com/ErnestTeluk/presentify/blob/main/.github/CONTRIBUTING.md">Contribute</a></strong> |
     <strong><a href="https://ernestteluk.github.io/presentify/docs/getting-started/installation">Quick Start</a></strong> |
     <strong><a href="https://ernestteluk.github.io/presentify/docs/getting-started/roadmap">Roadmap</a></strong>
