@@ -53,6 +53,11 @@ const config = {
             label: 'Docs',
           },
           {
+            position: 'left',
+            label: 'Playground',
+            to: '/playground',
+          },
+          {
             href: 'https://github.com/ErnestTeluk/presentify',
             label: 'GitHub',
             position: 'left',

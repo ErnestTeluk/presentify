@@ -6,12 +6,11 @@ export const useQueryParams = () => {
   const getParams = (name: string) => searchParams.get(name);
 
   const setParams = (name: string, value: string) => {
+    searchParams.set(name, value);
     window.history.pushState(
       undefined,
       '',
-      `${window.location
-        .toString()
-        .replace(window.location.search, '')}?${name}=${value}`,
+      `${window.location.pathname}?${searchParams.toString()}`,
     );
   };
 
