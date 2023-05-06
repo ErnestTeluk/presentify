@@ -1,6 +1,6 @@
 {
   "name": "create-presentify",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "author": "Ernest Teluk",
   "description": "CLI for presentify",
   "repository": "https://github.com/ErnestTeluk/presentify/tree/main/packages/create-presentify",
