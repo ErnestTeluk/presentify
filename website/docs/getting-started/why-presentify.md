@@ -16,7 +16,7 @@ Because Presentify uses pure react, it can be added very quickly to existing pro
 
 ### Themable
 
-Presentify is built with [Emotion](https://emotion.sh/docs/introduction) and which allows you to easily customize the appearance of your presentation. For code highlighting, Presentify uses [Prism](https://prismjs.com/) and you can easily use dark and light theme.
+Presentify is built with [Emotion](https://emotion.sh/docs/introduction), which allows you to easily customize the appearance of your presentation. For code highlighting, Presentify uses [Prism](https://prismjs.com/), so you can easily use dark and light theme.
 
 ### Developer experience
 
