@@ -21,6 +21,7 @@ const sidebars = {
         'tutorials/presentify-usage-example',
         'tutorials/theming-example',
         'tutorials/components-overriding',
+        'tutorials/diagram-example',
       ],
     },
     {
