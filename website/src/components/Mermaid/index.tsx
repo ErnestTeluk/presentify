@@ -1,8 +1,8 @@
 import mermaid from 'mermaid';
+import { usePresentifyContext } from 'presentify';
 import React, { ReactNode, useEffect } from 'react';
 
-import { usePresentifyContext } from './PresentifyProvider';
-import { StyledWrapper } from '../styles/Mermaid.styles';
+import { StyledWrapper } from './Mermaid.styled';
 
 export const Mermaid = ({ children }: { children: ReactNode }) => {
   const context = usePresentifyContext();

@@ -38,7 +38,6 @@
     "husky": "8.0.0",
     "jsdom": "21.1.1",
     "kolorist": "1.7.0",
-    "lerna": "6.0.1",
     "lint-staged": "13.2.0",
     "lodash": "4.17.21",
     "mermaid": "10.1.0",

@@ -5,6 +5,8 @@ import Layout from '@theme/Layout';
 import React from 'react';
 
 import { EditorComponent } from '../components/EditorComponent';
+import { PlaygroundErrorBoundary } from '../components/PlaygroundErrorBoundary';
+import { PlaygroundProvider } from '../providers/PlaygroundProvider';
 
 export const StyledMain = styled.main`
   display: flex;
@@ -42,13 +44,17 @@ export default function Playground(): JSX.Element {
     <Layout title="Check how it works">
       <BrowserOnly>
         {() => (
-          <StyledMain>
-            <EditorComponent
-              editorValue={editorValue}
-              setEditorValue={setEditorValue}
-            />
-            <Presentation editorValue={editorValue} />
-          </StyledMain>
+          <PlaygroundProvider>
+            <StyledMain>
+              <EditorComponent
+                editorValue={editorValue}
+                setEditorValue={setEditorValue}
+              />
+              <PlaygroundErrorBoundary>
+                <Presentation editorValue={editorValue} />
+              </PlaygroundErrorBoundary>
+            </StyledMain>
+          </PlaygroundProvider>
         )}
       </BrowserOnly>
     </Layout>

@@ -3,6 +3,7 @@ import Editor from '@monaco-editor/react';
 import React, { useEffect } from 'react';
 
 import { StyledWrapper } from './EditorComponent.styled';
+import { usePlaygroundContext } from '../../providers/PlaygroundProvider';
 
 export const EditorComponent = ({
   editorValue,
@@ -11,6 +12,7 @@ export const EditorComponent = ({
   editorValue: string;
   setEditorValue: (value: string) => void;
 }) => {
+  const { resetError } = usePlaygroundContext();
   const [width, setWidth] = React.useState(window.innerWidth);
   const { colorMode } = useColorMode();
 
@@ -29,7 +31,10 @@ export const EditorComponent = ({
         defaultLanguage="Markdown"
         value={editorValue}
         theme={colorMode === 'dark' ? 'vs-dark' : 'light'}
-        onChange={value => setEditorValue(value)}
+        onChange={value => {
+          setEditorValue(value);
+          resetError();
+        }}
       />
     </StyledWrapper>
   );
