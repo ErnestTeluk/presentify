@@ -1,4 +1,5 @@
 import { Global } from '@emotion/react';
+import { isNil } from 'lodash';
 import React, {
   createContext,
   ReactNode,
@@ -8,12 +9,12 @@ import React, {
 } from 'react';
 
 import { Keyboard } from './Keyboard';
-import { NotFound } from './NotFound';
-import { Slide } from './Slide';
+import { NormalLayout } from './NormalLayout';
+import { PresenterLayout } from './PresenterLayout';
 import { useQueryParams } from '../hooks/useQueryParams';
+import { useSharedState } from '../hooks/useSharedState';
 import { splitSlides } from '../lib/splitSlides';
 import { globalStyles } from '../styles/GlobalStyles.styled';
-import { Layout } from '../styles/Layout.styled';
 import { Options, PresentifyContextProps } from '../types/types';
 
 const PresentifyContext = createContext<PresentifyContextProps | null>(null);
@@ -28,9 +29,10 @@ export const PresentifyProvider = ({
   const { getParams, setParams } = useQueryParams();
   const pageFromParams = parseInt(getParams('page') || '0', 10);
 
-  const [currentSlide, setCurrentSlide] = useState<number>(
+  const [currentSlide, setCurrentSlide] = useSharedState<number>(
     isNaN(pageFromParams) ? 0 : pageFromParams,
   );
+  const [presenterMode, setPresenterMode] = useState<boolean>(false);
 
   useEffect(() => {
     setParams('page', currentSlide.toString());
@@ -54,23 +56,34 @@ export const PresentifyProvider = ({
       return prevState - 1;
     });
 
+  const togglePresenterMode = () => {
+    if (options?.disablePresenterMode !== true) {
+      setPresenterMode(prevState => !prevState);
+      if (!presenterMode) {
+        window.open(window.location.href, '_blank');
+      }
+    }
+  };
+
   const contextValue = {
     slides,
     options,
     currentSlide,
     onGoNextSlide,
     onGoBackSlide,
+    presenterMode,
+    togglePresenterMode,
   };
 
   return (
     <PresentifyContext.Provider value={contextValue}>
       <Global styles={globalStyles} />
       <Keyboard />
-      <Layout>
-        <Slide>
-          {slides[currentSlide] ? slides[currentSlide] : <NotFound />}
-        </Slide>
-      </Layout>
+      {presenterMode ? (
+        <PresenterLayout slides={slides} currentSlide={currentSlide} />
+      ) : (
+        <NormalLayout slides={slides} currentSlide={currentSlide} />
+      )}
     </PresentifyContext.Provider>
   );
 };
