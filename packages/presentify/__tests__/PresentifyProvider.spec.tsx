@@ -16,10 +16,12 @@ const keys = [
 ];
 
 const string = '+++\nlayout: normal\n+++';
+const notes = '// test note';
 
 const Test = () => (
   <PresentifyProvider>
     <p>{string}</p>
+    <p>{notes}</p>
     <div />
     <div />
     <hr />
@@ -110,6 +112,19 @@ describe('PresentifyProvider', () => {
       '404 - Not Found',
     );
   });
+  it('Show correct nextSlide in presenter mode', async () => {
+    window.history.pushState(
+      undefined,
+      '',
+      `${window.location
+        .toString()
+        .replace(window.location.search, '')}?page=1`,
+    );
+    render(<Test />);
+    await userEvent.keyboard('{alt>}{p}');
+    screen.debug();
+    expect(screen.getAllByTestId('slide')[1].children).toHaveLength(2);
+  });
 });
 
 describe('Keyboard', () => {
@@ -140,6 +155,35 @@ describe('Keyboard', () => {
   it('not used key was pressed', async () => {
     render(<Test />);
     await userEvent.keyboard('{Enter}');
+    expect(screen.getByTestId('slide').children).toHaveLength(2);
+  });
+  it('option + p key was pressed', async () => {
+    render(<Test />);
+    await userEvent.keyboard('{alt>}{p}');
+    screen.debug();
+    expect(screen.getByText('Current Slide')).toBeInTheDocument();
+    expect(screen.getByText('NextSlide')).toBeInTheDocument();
+    expect(screen.getByText('Notes')).toBeInTheDocument();
+  });
+  it('option + p key was pressed twice', async () => {
+    render(<Test />);
+    await userEvent.keyboard('{alt>}{p}');
+    await userEvent.keyboard('{alt>}{p}');
+    expect(screen.getByTestId('slide').children).toHaveLength(2);
+  });
+  it('option + p key was pressed when disablePresenterMode option wa true', async () => {
+    render(
+      <PresentifyProvider options={{ disablePresenterMode: true }}>
+        <p>{string}</p>
+        <div />
+        <div />
+        <hr />
+        <div />
+        <div />
+        <div />
+      </PresentifyProvider>,
+    );
+    await userEvent.keyboard('{alt>}{p}');
     expect(screen.getByTestId('slide').children).toHaveLength(2);
   });
 });

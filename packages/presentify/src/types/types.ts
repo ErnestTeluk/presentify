@@ -5,14 +5,17 @@ export enum Keys {
   Left = 'ArrowLeft',
   Up = 'ArrowUp',
   Down = 'ArrowDown',
+  P = 'KeyP',
 }
 
 export interface PresentifyContextProps {
   slides: ReactNode[][];
   currentSlide: number;
   options?: Options;
+  presenterMode: boolean;
   onGoNextSlide: () => void;
   onGoBackSlide: () => void;
+  togglePresenterMode: () => void;
 }
 
 export interface Options {
@@ -22,4 +25,5 @@ export interface Options {
   backgroundColor?: string;
   backgroundImg?: string;
   layout?: string;
+  disablePresenterMode?: boolean;
 }

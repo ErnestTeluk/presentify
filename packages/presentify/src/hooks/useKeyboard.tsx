@@ -5,25 +5,38 @@ import { Keys } from '../types/types';
 
 export const useKeyboard = () => {
   const context = usePresentifyContext();
-  const { onGoNextSlide, onGoBackSlide, currentSlide } = context || {};
+  const { onGoNextSlide, onGoBackSlide, currentSlide, togglePresenterMode } =
+    context || {};
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      switch (e.code) {
-        case Keys.Right:
-        case Keys.Up: {
-          e.preventDefault();
-          onGoNextSlide && onGoNextSlide();
-          break;
+      if (e.altKey) {
+        switch (e.code) {
+          case Keys.P: {
+            e.preventDefault();
+            togglePresenterMode && togglePresenterMode();
+            break;
+          }
+          default:
+            break;
         }
-        case Keys.Left:
-        case Keys.Down: {
-          e.preventDefault();
-          onGoBackSlide && onGoBackSlide();
-          break;
+      } else {
+        switch (e.code) {
+          case Keys.Right:
+          case Keys.Up: {
+            e.preventDefault();
+            onGoNextSlide && onGoNextSlide();
+            break;
+          }
+          case Keys.Left:
+          case Keys.Down: {
+            e.preventDefault();
+            onGoBackSlide && onGoBackSlide();
+            break;
+          }
+          default:
+            break;
         }
-        default:
-          break;
       }
     };
 
@@ -32,5 +45,5 @@ export const useKeyboard = () => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [currentSlide, onGoBackSlide, onGoNextSlide]);
+  }, [currentSlide, onGoBackSlide, onGoNextSlide, togglePresenterMode]);
 };

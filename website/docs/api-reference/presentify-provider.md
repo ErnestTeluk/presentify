@@ -10,20 +10,22 @@ Moreover, it has keyboard shortcuts for manipulating the presentation. It also a
 
 ## PresentifyProviders Options
 
-|      Option       |      Type       |      Optional      | Default |                          Description                          |
-| :---------------: | :-------------: | :----------------: | :-----: | :-----------------------------------------------------------: |
-|      `theme`      |  dark / light   | :heavy_check_mark: |  light  | code syntax highlighter theme (dark = vsDark, light = github) |
-|   `useFiraCode`   |     boolean     | :heavy_check_mark: |  false  |  use firaCode font with ligatures in Code syntax highlighter  |
-|    `className`    |     string      | :heavy_check_mark: |  none   |               set className to slide parent div               |
-| `backgroundColor` |     string      | :heavy_check_mark: |  white  |                 set background color to slide                 |
-|  `backgroundImg`  |     string      | :heavy_check_mark: |  none   |                 set background Image to slide                 |
-|     `layout`      | normal / center | :heavy_check_mark: | center  |                      set layout of slide                      |
+|         Option         |      Type       |      Optional      | Default |                          Description                          |
+| :--------------------: | :-------------: | :----------------: | :-----: | :-----------------------------------------------------------: |
+|        `theme`         |  dark / light   | :heavy_check_mark: |  light  | code syntax highlighter theme (dark = vsDark, light = github) |
+|     `useFiraCode`      |     boolean     | :heavy_check_mark: |  false  |  use firaCode font with ligatures in Code syntax highlighter  |
+|      `className`       |     string      | :heavy_check_mark: |  none   |               set className to slide parent div               |
+|   `backgroundColor`    |     string      | :heavy_check_mark: |  white  |                 set background color to slide                 |
+|    `backgroundImg`     |     string      | :heavy_check_mark: |  none   |                 set background Image to slide                 |
+|        `layout`        | normal / center | :heavy_check_mark: | center  |                      set layout of slide                      |
+| `disablePresenterMode` |     boolean     | :heavy_check_mark: |  false  |     disable option to open presentation in presenter mode     |
 
 ## Keyboard Shortcuts
 
-|      Key      |         Description          |
-| :-----------: | :--------------------------: |
-|  `Arrow up`   |   change to the next slide   |
-| `Arrow Down`  | change to the previous slide |
-| `Arrow left`  |   change to the next slide   |
-| `Arrow right` | change to the previous slide |
+|       Key        |          Description          |
+| :--------------: | :---------------------------: |
+|    `Arrow up`    |   change to the next slide    |
+|   `Arrow Down`   | change to the previous slide  |
+|   `Arrow left`   |   change to the next slide    |
+|  `Arrow right`   | change to the previous slide  |
+| `option/alt + p` | enable/disable presenter mode |
